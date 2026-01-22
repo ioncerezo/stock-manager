@@ -1,1 +1,18 @@
 <p>product-form works!</p>
+<h1>{{ id ? 'Editar Producto' : 'Nuevo Producto' }}</h1>
+<form (submit)="enviarFormulario()">
+  <label for="title">Titulo: </label>
+  <input [(ngModel)]="formulario.title" type="text" id="title" name="title" required="true" />
+  <label for="price">Precio: </label>
+  <input
+    [(ngModel)]="formulario.price"
+    type="number"
+    id="price"
+    name="price"
+    required="true"
+    min="0"
+  />
+  <label for="stock">Stock: </label>
+  <input [(ngModel)]="formulario.stock" type="number" id="stock" name="stock" />
+  <button>{{ id ? 'Actualizar' : 'Crear' }}</button>
+</form>

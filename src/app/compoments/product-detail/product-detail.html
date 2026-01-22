@@ -1,1 +1,11 @@
-<p>product-detail works!</p>
+<section *ngIf="producto">
+  <h1>{{ producto.title }}</h1>
+  <h3>{{ producto.price }}</h3>
+  <p>{{ producto.description }}</p>
+  <img alt="Imagen de {{ producto.title }}" src="{{ producto.thumbnail }}" />
+  <button (click)="eliminar()">Eliminar Producto</button>
+  <button (click)="editar()">Editar Producto</button>
+</section>
+<section *ngIf="!producto">
+  <p>Cargando...</p>
+</section>

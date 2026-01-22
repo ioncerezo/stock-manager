@@ -1,5 +1,7 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'; 
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -9,20 +11,9 @@ import { ProductForm } from './compoments/product-form/product-form';
 import { NotFound } from './compoments/not-found/not-found';
 
 @NgModule({
-  declarations: [
-    App,
-    ProductList,
-    ProductDetail,
-    ProductForm,
-    NotFound
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [
-    provideBrowserGlobalErrorListeners()
-  ],
-  bootstrap: [App]
+  declarations: [App, ProductList, ProductDetail, ProductForm, NotFound],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  providers: [provideBrowserGlobalErrorListeners()],
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,17 @@
+.stock-bajo,
+.precio-alto {
+  color: red;
+  font-weight: 600;
+}
+.stock-bajo::after {
+  content: '¡Últimas unidades!';
+}
+
+.stock-normal {
+  color: green;
+}
+
+.title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

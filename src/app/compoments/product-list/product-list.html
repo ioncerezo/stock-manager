@@ -1,1 +1,38 @@
-<p>product-list works!</p>
+<h1>Lista de productos:</h1>
+<section *ngIf="!esError && !loading">
+  <label for="filtrar">Filtrar por nombre: </label>
+  <input (input)="filtrar()" [(ngModel)]="busqueda" type="text" id="filtrar" name="filtrar" />
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productsFiltrados">
+        <td class="title" (click)="navegarDetail(product.id)">{{ product.title }}</td>
+        <td [ngClass]="{ 'precio-alto': product.price > 500 }">{{ product.price }}€</td>
+        <td [ngClass]="{ 'stock-bajo': product.stock < 10, 'stock-normal': product.stock >= 10 }">
+          {{ product.stock }}
+        </td>
+        <td>
+          <button (click)="editar(product.id)">Editar</button>
+          <button (click)="eliminar(product.id)">Eliminar</button>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="4">Total: {{ total.toFixed(2) }}€</th>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<section *ngIf="loading">
+  <p>Cargando</p>
+</section>
+
+<section *ngIf="esError">
+  <p>Error al cargar...</p>
+</section>
